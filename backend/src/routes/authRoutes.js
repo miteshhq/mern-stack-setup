@@ -101,11 +101,6 @@ router.post('/login', async (req, res) => {
             return res.status(400).json({ message: 'Invalid credentials' });
         }
 
-        // Check if user is active
-        if (!user.isActive) {
-            return res.status(400).json({ message: 'Account is deactivated' });
-        }
-
         // Check password
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
@@ -146,10 +141,6 @@ router.get('/verify', authenticateToken, async (req, res) => {
     try {
         const user = await User.findById(req.user.userId)
             .select('-password');
-
-        if (!user || !user.isActive) {
-            return res.status(401).json({ valid: false, message: 'User not found or inactive' });
-        }
 
         res.status(200).json({
             valid: true,
