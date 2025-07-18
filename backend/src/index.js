@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-dotenv.config();
+dotenv.config({ quiet: true });
 
 import express from 'express';
 import cors from 'cors';
@@ -26,7 +26,6 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.options("*", cors(corsOptions));
 
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
@@ -42,8 +41,8 @@ app.get('/', (req, res) => {
     });
 });
 
-// 404 handler
-app.use('*', (req, res) => {
+// 404 handler - FIXED
+app.use('*path', (req, res) => {
     res.status(404).json({ message: 'Route not found' });
 });
 

@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs';
 import User from "../models/User.js";
 import dotenv from 'dotenv';
 
-dotenv.config();
+dotenv.config({ quiet: true });
 
 const MONGO_URI = process.env.NODE_ENV === 'development'
     ? process.env.MONGODB_URI
