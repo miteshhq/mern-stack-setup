@@ -25,7 +25,7 @@ const ProtectedRoute = ({ children, requireAuth = true }) => {
 
   if (!requireAuth && isAuthenticated) {
     // Redirect authenticated users away from auth pages
-    return <Navigate to="/user/play" replace />;
+    return <Navigate to="/user/dashboard" replace />;
   }
 
   return children;

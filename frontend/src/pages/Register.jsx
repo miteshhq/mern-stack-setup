@@ -120,7 +120,7 @@ const Register = () => {
           rememberMe: true,
         });
         setTimeout(() => {
-          navigate("/user/play", { replace: true });
+          navigate("/user/dashboard", { replace: true });
         }, 1000);
       }
     } catch (error) {

@@ -32,7 +32,7 @@ const DefaultRoute = () => {
     return <Navigate to="/admin/dashboard" replace />;
   }
 
-  return <Navigate to="/user/play" replace />;
+  return <Navigate to="/user/dashboard" replace />;
 };
 
 function App() {
